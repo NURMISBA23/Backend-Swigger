@@ -27,7 +27,22 @@
 # Laporan Struktur Proyek NestJS Berdasarkan Gambar
 
 Laporan ini menyajikan analisis terstruktur terhadap arsitektur proyek NestJS, didasarkan pada visualisasi struktur folder yang diberikan.  Fokus utama laporan adalah identifikasi dan lokalisasi komponen-komponen arsitektur NestJS yang krusial. Komponen-komponen yang dianalisis meliputi aspek instalasi framework NestJS, implementasi Controller dan Service, pengorganisasian Module, integrasi Prisma ORM, mekanisme autentikasi, penerapan middleware, guard, dan decorator, fungsionalitas file uploader dan getter, implementasi query search, dan integrasi WebSocket.  Laporan ini disusun dengan tujuan untuk menyediakan dokumentasi yang jelas dan informatif mengenai struktur proyek NestJS ini.
+Berikut adalah direktori dan file utama dalam proyek ini:
 
+*   **`dist`**: Direktori output hasil kompilasi kode TypeScript menjadi JavaScript. Direktori ini dihasilkan setelah proses build proyek.
+*   **`node_modules`**: Direktori yang berisi semua dependensi proyek yang terinstal, termasuk library NestJS dan dependensi lainnya. Direktori ini tidak termasuk dalam repositori kode dan biasanya dibuat setelah menjalankan perintah `npm install` atau `yarn install`.
+*   **`prisma`**: Direktori yang terkait dengan integrasi Prisma ORM. Direktori ini berisi skema database Prisma (`schema.prisma`) dan file-file terkait integrasi Prisma dengan NestJS.
+*   **`src`**: Direktori utama yang berisi kode sumber aplikasi NestJS. Di dalam direktori `src`, kode diorganisasikan berdasarkan fitur dan jenis komponen (controller, service, module, dto, entity, dll.).
+    *   **Direktori Fitur (contoh: `chat`, `profile`, `app`, `auth`)**: Direktori-direktori ini mengelompokkan komponen-komponen yang terkait dengan fitur-fitur spesifik aplikasi (misalnya, fitur chat, fitur profil pengguna, fitur otentikasi).
+    *   **`dto`**: Direktori untuk Data Transfer Objects (DTOs). DTOs digunakan untuk mendefinisikan struktur data yang digunakan dalam permintaan dan respons API.
+    *   **`entity`**: Direktori untuk definisi entitas database. Entitas merepresentasikan tabel atau koleksi dalam database.
+    *   **`main.ts`**: File utama aplikasi NestJS, titik masuk aplikasi. File ini bertanggung jawab untuk bootstrapping aplikasi NestJS.
+    *   **`prisma.ts`**: File yang kemungkinan berisi konfigurasi atau instance Prisma Client untuk interaksi dengan database.
+    *   **`user.decorator.ts`**: File yang berisi custom decorator terkait pengguna, kemungkinan untuk mengambil informasi pengguna dari request.
+*   **`test`**: Direktori untuk file-file pengujian (unit testing, integration testing, e2e testing).
+*   **`uploads`**: Direktori yang kemungkinan digunakan untuk menyimpan file yang diunggah oleh pengguna aplikasi.
+*   **File Konfigurasi dan Lainnya**:
+    *   `.eslintrc.js`, `.gitignore`, `.prettierrc`, `nest-cli.json`, `package-lock.json`, `package.json`, `README.md`, `tsconfig.build.json`, `tsconfig.json`: File-file konfigurasi untuk linting, formatting kode, konfigurasi NestJS CLI, konfigurasi package manager (npm), dan konfigurasi TypeScript compiler.
 ## 1. Instalasi NestJS
 ```bash
 npm install -g @nestjs/cli //install NestJs CLI secara Global
