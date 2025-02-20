@@ -26,7 +26,7 @@
 
 # Laporan Struktur Proyek NestJS Berdasarkan Gambar
 
-Laporan ini dibuat berdasarkan analisis struktur folder proyek NestJS yang terlihat pada gambar yang diberikan. Tujuan laporan ini adalah untuk mengidentifikasi dan menjelaskan lokasi dari berbagai komponen penting dalam proyek NestJS, seperti instalasi NestJS, Controller, Service, Module, Prisma, otentikasi, middleware, guard, decorator, file uploader/getter, query search, dan WebSocket.
+Laporan ini menyajikan analisis terstruktur terhadap arsitektur proyek NestJS, didasarkan pada visualisasi struktur folder yang diberikan.  Fokus utama laporan adalah identifikasi dan lokalisasi komponen-komponen arsitektur NestJS yang krusial. Komponen-komponen yang dianalisis meliputi aspek instalasi framework NestJS, implementasi Controller dan Service, pengorganisasian Module, integrasi Prisma ORM, mekanisme autentikasi, penerapan middleware, guard, dan decorator, fungsionalitas file uploader dan getter, implementasi query search, dan integrasi WebSocket.  Laporan ini disusun dengan tujuan untuk menyediakan dokumentasi yang jelas dan informatif mengenai struktur proyek NestJS ini.
 
 ## 1. Instalasi NestJS
 
