@@ -66,7 +66,7 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
-
+```
 
 
 ## 2. Controller dan Service
