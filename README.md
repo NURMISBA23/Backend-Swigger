@@ -34,7 +34,6 @@ npm install -g @nestjs/cli //install NestJs CLI secara Global
 nest new labBackend //Buat Proyek NestJS baru
 cd labBackend
 npm run start:dev //jalankan aplikasi
-
 ```
     Cuplikan gambar di atas menunjukkan file `package.json` dan `package-lock.json` yang merupakan indikator proyek Node.js dan NestJS. File-file ini berisi informasi tentang dependensi dan versi paket yang digunakan dalam proyek.
 
