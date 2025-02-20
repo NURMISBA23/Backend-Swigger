@@ -29,13 +29,13 @@
 Laporan ini menyajikan analisis terstruktur terhadap arsitektur proyek NestJS, didasarkan pada visualisasi struktur folder yang diberikan.  Fokus utama laporan adalah identifikasi dan lokalisasi komponen-komponen arsitektur NestJS yang krusial. Komponen-komponen yang dianalisis meliputi aspek instalasi framework NestJS, implementasi Controller dan Service, pengorganisasian Module, integrasi Prisma ORM, mekanisme autentikasi, penerapan middleware, guard, dan decorator, fungsionalitas file uploader dan getter, implementasi query search, dan integrasi WebSocket.  Laporan ini disusun dengan tujuan untuk menyediakan dokumentasi yang jelas dan informatif mengenai struktur proyek NestJS ini.
 
 ## 1. Instalasi NestJS
+```bash
+npm install -g @nestjs/cli //install NestJs CLI secara Global
+nest new labBackend //Buat Proyek NestJS baru
+cd labBackend
+npm run start:dev //jalankan aplikasi
 
-Instalasi NestJS dalam sebuah proyek biasanya ditandai dengan adanya beberapa file konfigurasi dan direktori penting. Berdasarkan gambar, kita dapat mengidentifikasi beberapa indikator instalasi NestJS:
-
-*   **`package.json` dan `package-lock.json`**: File-file ini adalah inti dari proyek Node.js, termasuk NestJS. `package.json` berisi daftar dependensi proyek, termasuk paket NestJS dan dependensi lainnya. `package-lock.json` memastikan versi dependensi yang konsisten.
-
-    [Image of package.json and package-lock.json in file explorer]
-
+```
     Cuplikan gambar di atas menunjukkan file `package.json` dan `package-lock.json` yang merupakan indikator proyek Node.js dan NestJS. File-file ini berisi informasi tentang dependensi dan versi paket yang digunakan dalam proyek.
 
 *   **`node_modules`**: Direktori ini berisi semua dependensi proyek yang telah diinstal, termasuk library NestJS.
