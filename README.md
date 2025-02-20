@@ -39,23 +39,35 @@ npm run start:dev //jalankan aplikasi
 Anda dapat mengakses aplikasi di browser pada alamat yang tertera
 ```https://localhost:3000```
 
-*   **`node_modules`**: Direktori ini berisi semua dependensi proyek yang telah diinstal, termasuk library NestJS.
+*   **`integrasi Swagger (OpenApi) untuk Dokumentasi API`**: Swagger (OpenAPI) adalah kerangka kerja populer untuk mendeskripsikan dan mendokumentasikan API REST. NestJS memiliki modul khusus untuk integrasi Swagger, yang memungkinkan Anda menghasilkan dokumentasi API secara otomatis berdasarkan kode Anda.
 
     [Image of node_modules folder in file explorer]
+```Bash
+npm install @nestjs/swagger swagger-ui-express  //install paket Swagger
 
-    Direktori `node_modules` adalah tempat semua library dan dependensi proyek disimpan setelah instalasi menggunakan `npm install` atau `yarn install`. Keberadaan direktori ini menandakan proyek ini telah memiliki dependensi yang terinstal.
+    Konfigurasi SwaggerModule di main.ts
+```src/main.ts
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
-*   **`nest-cli.json`**: File konfigurasi untuk NestJS CLI (Command Line Interface).
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
 
-    [Image of nest-cli.json in file explorer]
+  const config = new DocumentBuilder()
+    .setTitle('Belajar NestJS API')
+    .setDescription('Dokumentasi API untuk aplikasi Belajar NestJS')
+    .setVersion('1.0')
+    .addTag('belajar-nestjs')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('misba', app, document); // path untuk akses Swagger UI
 
-    File `nest-cli.json` digunakan untuk konfigurasi NestJS CLI, alat bantu untuk pengembangan NestJS. File ini seringkali ada dalam proyek NestJS.
+  await app.listen(3000);
+}
+bootstrap();
 
-*   **`tsconfig.json` dan `tsconfig.build.json`**: File konfigurasi untuk TypeScript compiler. NestJS dibangun dengan TypeScript, sehingga file-file ini penting.
 
-    [Image of tsconfig.json and tsconfig.build.json in file explorer]
-
-    File `tsconfig.json` dan `tsconfig.build.json` adalah file konfigurasi untuk kompiler TypeScript. Ini menunjukkan bahwa proyek ini menggunakan TypeScript, yang merupakan bahasa utama dalam pengembangan NestJS.
 
 ## 2. Controller dan Service
 
