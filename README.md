@@ -120,8 +120,37 @@ Prisma adalah ORM (Object-Relational Mapper) yang populer digunakan dengan NestJ
 
     [Image of prisma folder and related files in file explorer]
 
-    Direktori dan file-file yang terkait dengan Prisma ini menunjukkan penggunaan Prisma sebagai ORM dalam proyek. `schema.prisma` mendefinisikan struktur database, dan file lainnya mengintegrasikan Prisma dengan aplikasi NestJS.
+    Direktori dan file-file yang terkait dengan Prisma ini menunjukkan penggunaan Prisma sebagai ORM dalam proyek. `schema.prisma` mendefinisikan struktur database, dan file lainnya mengintegrasikan Prisma dengan aplikasi NestJS. 
+    **Untuk Menginstal Prisma Prasyarat:**
 
+*   Pastikan Anda telah menyelesaikan langkah-langkah instalasi NestJS (bagian sebelumnya).
+*   Pastikan Anda telah memiliki database yang berjalan (misalnya, PostgreSQL, MySQL, SQLite, dll.). Dalam contoh ini, kita akan menggunakan **PostgreSQL**.
+**Langkah 1: Instal Prisma CLI dan Prisma Client**
+```bash
+npm install prisma --save-dev
+npm install @prisma/client
+```
+**Langkah 2: Inisialisasi Prisma**
+```bash
+npx prisma init --datasource-provider postgresql
+```
+**Langkah 3: Konfigurasi Koneksi Database**
+```bash
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME?schema=public" //sebelum konfigurasi
+
+DATABASE_URL="postgresql://postgres:password123@localhost:5432/belajar_nestjs_db?schema=public" //setelah konfigurasi
+```
+
+**Langkah 4: Definisikan Model Database di schema.prisma**
+**Langkah 5: Generate Prisma Client**
+```Bash
+npx prisma generate
+```
+
+**Langkah 6: Buat Prisma Service di NestJS**
+```Bash
+nest g service prisma
+```
 ## 5. Authentication
 
 Authentication (Otentikasi) adalah proses verifikasi identitas pengguna.
