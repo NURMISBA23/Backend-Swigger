@@ -94,44 +94,11 @@ Dalam arsitektur NestJS, Controller bertanggung jawab untuk menangani permintaan
 
     Cuplikan gambar di atas menunjukkan beberapa file controller seperti `profile.controller.ts`, `app.controller.ts`, `auth.controller.ts`, `chat.gateway.ts`, dan `sprofile.controller.ts`. Controller ini bertugas untuk menerima permintaan dari klien dan meneruskannya ke service.
 
-    **Contoh Struktur Controller (berdasarkan nama file):**
-
-    ```typescript
-    // profile.controller.ts
-    import { Controller, Get } from '@nestjs/common';
-    import { ProfileService } from './profile.service';
-
-    @Controller('profile')
-    export class ProfileController {
-      constructor(private readonly profileService: ProfileService) {}
-
-      @Get()
-      getProfile(): string {
-        return this.profileService.getProfileData();
-      }
-    }
-    ```
-
 *   **Service**: Biasanya memiliki akhiran `*.service.ts` dan terletak di direktori yang sama dengan controller atau dalam direktori `services` di dalam fitur.
 
     [Image of service files in file explorer]
 
     Cuplikan gambar di atas menunjukkan file service seperti `prisma.service.ts`, `chat.service.ts`, `sprofile.service.ts`, `app.service.ts`, `auth.service.ts`, dan `profileservicespe.ts` (kemungkinan typo, seharusnya `profile.service.spec.ts` atau `profile.service.ts`). Service ini berisi logika bisnis aplikasi dan dipanggil oleh controller.
-
-    **Contoh Struktur Service (berdasarkan nama file):**
-
-    ```typescript
-    // profile.service.ts
-    import { Injectable } from '@nestjs/common';
-
-    @Injectable()
-    export class ProfileService {
-      getProfileData(): string {
-        // Logika bisnis untuk mengambil data profil
-        return 'Data Profil dari Service';
-      }
-    }
-    ```
 
 ## 3. Module
 
@@ -143,20 +110,7 @@ Module dalam NestJS digunakan untuk mengorganisir komponen-komponen aplikasi. Bi
 
     Cuplikan gambar di atas menunjukkan berbagai file module. Module ini berfungsi sebagai wadah untuk mengelompokkan controller, service, dan komponen lain yang terkait. `app.module.ts` adalah module akar aplikasi NestJS.
 
-    **Contoh Struktur Module (berdasarkan nama file):**
-
-    ```typescript
-    // profile.module.ts
-    import { Module } from '@nestjs/common';
-    import { ProfileController } from './profile.controller';
-    import { ProfileService } from './profile.service';
-
-    @Module({
-      controllers: [ProfileController],
-      providers: [ProfileService],
-    })
-    export class ProfileModule {}
-    ```
+    
 
 ## 4. Prisma JS
 
@@ -168,25 +122,6 @@ Prisma adalah ORM (Object-Relational Mapper) yang populer digunakan dengan NestJ
 
     Direktori dan file-file yang terkait dengan Prisma ini menunjukkan penggunaan Prisma sebagai ORM dalam proyek. `schema.prisma` mendefinisikan struktur database, dan file lainnya mengintegrasikan Prisma dengan aplikasi NestJS.
 
-    **Contoh Struktur Prisma Service (berdasarkan nama file):**
-
-    ```typescript
-    // prisma.service.ts
-    import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
-    import { PrismaClient } from '@prisma/client';
-
-    @Injectable()
-    export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
-      async onModuleInit() {
-        await this.$connect();
-      }
-
-      async onModuleDestroy() {
-        await this.$disconnect();
-      }
-    }
-    ```
-
 ## 5. Authentication
 
 Authentication (Otentikasi) adalah proses verifikasi identitas pengguna.
@@ -197,23 +132,6 @@ Authentication (Otentikasi) adalah proses verifikasi identitas pengguna.
 
     Direktori dan file-file `auth` menunjukkan implementasi fitur otentikasi dalam aplikasi. `auth.guard.ts` kemungkinan berisi implementasi Guard untuk melindungi rute yang memerlukan otentikasi.
 
-    **Contoh Struktur Auth Guard (berdasarkan nama file):**
-
-    ```typescript
-    // auth.guard.ts
-    import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-    import { Observable } from 'rxjs';
-
-    @Injectable()
-    export class AuthGuard implements CanActivate {
-      canActivate(
-        context: ExecutionContext,
-      ): boolean | Promise<boolean> | Observable<boolean> {
-        // Logika untuk memeriksa otentikasi
-        return true; // Ganti dengan logika otentikasi sebenarnya
-      }
-    }
-    ```
 
 ## 6. Middleware, Guard, dan Decorator
 
@@ -230,20 +148,6 @@ Komponen-komponen ini digunakan untuk menangani permintaan dan respons secara gl
     [Image of user.decorator.ts in file explorer]
 
     `user.decorator.ts` kemungkinan berisi decorator custom yang berhubungan dengan entitas User, misalnya untuk mengambil data user dari token otentikasi.
-
-    **Contoh Struktur User Decorator (berdasarkan nama file):**
-
-    ```typescript
-    // user.decorator.ts
-    import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-
-    export const User = createParamDecorator(
-      (data: unknown, ctx: ExecutionContext) => {
-        const request = ctx.switchToHttp().getRequest();
-        return request.user; // Asumsi data user ada di request.user
-      },
-    );
-    ```
 
 *   **Middleware**: Tidak terlihat file middleware secara eksplisit dalam struktur folder berdasarkan nama file. Middleware biasanya diterapkan secara global di `app.module.ts` atau module tertentu. Middleware digunakan untuk memproses request sebelum mencapai handler rute (controller).
 
@@ -281,27 +185,4 @@ Untuk komunikasi real-time menggunakan Web Socket.
 
     Direktori dan file-file `chat` menunjukkan implementasi fitur Web Socket. `chat.gateway.ts` adalah komponen utama dalam NestJS untuk menangani koneksi dan pesan Web Socket.
 
-    **Contoh Struktur Chat Gateway (berdasarkan nama file):**
-
-    ```typescript
-    // chat.gateway.ts
-    import { WebSocketGateway, SubscribeMessage, MessageBody } from '@nestjs/websockets';
-
-    @WebSocketGateway()
-    export class ChatGateway {
-      @SubscribeMessage('message')
-      handleMessage(@MessageBody() message: string): string {
-        return 'Pesan diterima: ' + message;
-      }
-    }
-    ```
-
----
-
-**Catatan Penting:**
-
-*   Laporan ini dibuat berdasarkan nama file dan struktur folder yang terlihat dalam gambar. Tanpa melihat isi file, analisis ini bersifat perkiraan.
-*   Beberapa nama file mungkin mengandung kesalahan ketik (typo), seperti `authservicets`, `profileservicespe.ts`, `appeze-spec.ts`, `eslintre.js`, `porttierrc`. Kemungkinan nama yang benar adalah `auth.service.ts`, `profile.service.spec.ts`, `app.e2e-spec.ts`, `eslintrc.js`, `prettierrc`.
-*   Tidak semua fitur yang diminta (seperti middleware dan file uploader/getter, query search) terlihat secara eksplisit sebagai folder atau file terpisah. Implementasinya bisa saja tersebar di komponen lain.
-
-Semoga laporan ini bermanfaat untuk memahami struktur proyek NestJS berdasarkan gambar yang Anda berikan. Jika ada pertanyaan lebih lanjut, jangan ragu untuk bertanya.
+    
