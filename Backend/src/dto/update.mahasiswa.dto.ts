@@ -5,12 +5,12 @@ import {IsNotEmpty,IsString,isNotEmpty,Length,IsEnum,} from 'class-validator';
     @ApiProperty({
       description: "NIM",
       type: String,
-      example: "1058411133222"
+      example: "105841103422"
     })
     @ApiProperty({
       description: 'Nama mahasiswa',
       type: String,
-      example: 'Muh. Fathur Hidayat',
+      example: 'Nurmisba',
     })
     @IsString()
     @IsNotEmpty()
@@ -19,7 +19,7 @@ import {IsNotEmpty,IsString,isNotEmpty,Length,IsEnum,} from 'class-validator';
     @ApiProperty({
       description: 'Kelas mahasiswa',
       type: String,
-      example: '5D',
+      example: '5A',
     })
     @IsString()
     @IsNotEmpty()
@@ -39,7 +39,7 @@ import {IsNotEmpty,IsString,isNotEmpty,Length,IsEnum,} from 'class-validator';
     @ApiProperty({
       description: 'Jenis Kelamin mahasiswa',
       enum: Jenis_Kelamin,
-      example: 'L',
+      example: 'P',
     })
     @IsEnum(Jenis_Kelamin)
     jenis_kelamin: Jenis_Kelamin;
