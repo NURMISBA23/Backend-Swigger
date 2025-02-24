@@ -4,13 +4,13 @@ import { IsEnum, IsNotEmpty, IsString, Length } from "class-validator";
 
 export class CreateMahasiswaDTO {
 
-    @ApiProperty({ description : "NIM", type : String, example : "105841113322" })
+    @ApiProperty({ description : "NIM", type : String, example : "105841103422" })
     @IsString({message : "NIM Harus Bertipe String"})
     @IsNotEmpty({message : "Tidak Boleh Kosong"})
     @Length(1, 12, {message : "Hanya bisa sampai 12 karakter"})
     nim : string;
 
-    @ApiProperty({description :"Nama", type : String, example : "Muh. Fathur Hidayat"})
+    @ApiProperty({description :"Nama", type : String, example : "Nurmisba"})
     @IsString({message : "Nama Harus Bertipe String"})
     @IsNotEmpty({message : "Tidak Boleh Kosong"})
     @Length(1, 50, {message : "Hanya bisa sampai 12 karakter"})
@@ -31,7 +31,7 @@ export class CreateMahasiswaDTO {
     @ApiProperty({
         enum : Jenis_Kelamin,
         description : "Jenis Kelamin",
-        example : "L"
+        example : "P"
     })
     @IsEnum(Jenis_Kelamin,{
         message : "Jenis Kelamin hanya bernilai L atau P"
