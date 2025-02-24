@@ -4,7 +4,7 @@ export class LoginUserDTO {
  @ApiProperty({
   description : "UserName For Login",
   type : String,
-  example : "Fathur"
+  example : "Nurmisba"
  })
  @IsString()
  @IsNotEmpty()
